@@ -9,7 +9,9 @@
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="250" Margin="100,10,0,0" TextWrapping="Wrap" AcceptsReturn="True" Text="" VerticalAlignment="Top" Width="150" Name="TextBox" />
         <Button Content="Corecteaza" HorizontalAlignment="Left" Height="25" Width="80" Margin="0,5,0,350" Click="Button_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="300,10,0,0" Height="250" TextWrapping="Wrap" Text="Reguli Corectate" VerticalAlignment="Top"  Width="150" Name="Display" />
+        <Button Content="FirstFollow" HorizontalAlignment="Left" Height="25" Width="80" Margin="0,5,0,250" Click="Button_Click2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="300,10,0,0" Height="250" TextWrapping="Wrap" Text="Reguli Corectate" VerticalAlignment="Top"  Width="150" Name="Display1" />
+        <TextBlock HorizontalAlignment="Left" Margin="450,10,0,0" Height="250" TextWrapping="Wrap" Text="Multimii First Follow" VerticalAlignment="Top"  Width="150" Name="Display2" />
 
     </Grid>
 </Window>

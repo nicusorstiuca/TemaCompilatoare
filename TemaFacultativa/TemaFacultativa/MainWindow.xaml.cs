@@ -24,12 +24,13 @@ namespace TemaFacultativa
         {
             InitializeComponent();
         }
-
+        private Gramatica gramatica;
+        private GeneratorCod generator;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             List<string> Neterminale = TextBox.GetLineText(1).Remove(TextBox.GetLineText(1).Length - 2).Split(' ').ToList();
             List<string> Terminale = TextBox.GetLineText(2).Remove(TextBox.GetLineText(2).Length - 2).Split(' ').ToList();
-            Gramatica gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
+            gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
             for(int i=3;i<TextBox.LineCount;i++)
             {
                 gramatica.Add(TextBox.GetLineText(i).Remove(TextBox.GetLineText(i).Length-2));
@@ -45,12 +46,23 @@ namespace TemaFacultativa
                 }
                 ReguliCorectate += '\n';
             }
-            Display.Text = ReguliCorectate;
-            /*for (int i = 3; i < TextBox.LineCount; i++)
-            {
-                Display.Text+= TextBox.GetLineText(i);
-            }*/
+            Display1.Text = ReguliCorectate;
         }
 
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            generator = new GeneratorCod(gramatica);
+            generator.MultimileFF();
+            string MultimiDirector="";
+            foreach(List<string> i in generator.FirstFollow)
+            {
+                foreach(string j in i)
+                {
+                    MultimiDirector += j + " ";
+                }
+                MultimiDirector += "\n";
+            }
+            Display2.Text = MultimiDirector;
+        }
     }
 }
