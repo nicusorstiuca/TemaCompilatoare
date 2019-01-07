@@ -31,7 +31,7 @@ namespace TemaFacultativa
             List<string> Neterminale = TextBox.GetLineText(1).Remove(TextBox.GetLineText(1).Length - 2).Split(' ').ToList();
             List<string> Terminale = TextBox.GetLineText(2).Remove(TextBox.GetLineText(2).Length - 2).Split(' ').ToList();
             gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
-            for(int i=3;i<TextBox.LineCount;i++)
+            for(int i=4;i<TextBox.LineCount;i++)
             {
                 gramatica.Add(TextBox.GetLineText(i).Remove(TextBox.GetLineText(i).Length-2));
             }
