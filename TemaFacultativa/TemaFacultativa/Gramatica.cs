@@ -8,12 +8,14 @@ namespace TemaFacultativa
 {
     class Gramatica
     {
+        public string SimbolStart;
         public List<string> Terminale;
         public List<string> Neterminale;
         public List<string> NeterminaleNoi;
         public List<RegulaProductie> Reguli;
-        public Gramatica(List<string> Terminalele, List<string> Neterminalele)
+        public Gramatica(string Start,List<string> Terminalele, List<string> Neterminalele)
         {
+            SimbolStart = new string(Start.ToCharArray());
             Terminale = new List<string>(Terminalele);
             Neterminale = new List<string>(Neterminalele);
             NeterminaleNoi = new List<string>();
@@ -28,15 +30,9 @@ namespace TemaFacultativa
         {
             Reguli.Add(regula);
         }
-        public string VerificaGramatica()
+        public void VerificaGramatica()
         {
-            string probleme = "";
-            if (!(this.Existenta()))
-            {
-                probleme += "1";
-            }
             GramaticaLL1();
-            return probleme;
         }
         public bool Existenta()
         {

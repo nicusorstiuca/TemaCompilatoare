@@ -24,5 +24,33 @@ namespace TemaFacultativa
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> Neterminale = TextBox.GetLineText(1).Remove(TextBox.GetLineText(1).Length - 2).Split(' ').ToList();
+            List<string> Terminale = TextBox.GetLineText(2).Remove(TextBox.GetLineText(2).Length - 2).Split(' ').ToList();
+            Gramatica gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
+            for(int i=3;i<TextBox.LineCount;i++)
+            {
+                gramatica.Add(TextBox.GetLineText(i).Remove(TextBox.GetLineText(i).Length-2));
+            }
+            gramatica.VerificaGramatica();
+            string ReguliCorectate="";
+            foreach(RegulaProductie temp in gramatica.Reguli)
+            {
+                ReguliCorectate += temp.Stanga + " : ";
+                foreach(string s in temp.Dreapta)
+                {
+                    ReguliCorectate += s+ " ";
+                }
+                ReguliCorectate += '\n';
+            }
+            Display.Text = ReguliCorectate;
+            /*for (int i = 3; i < TextBox.LineCount; i++)
+            {
+                Display.Text+= TextBox.GetLineText(i);
+            }*/
+        }
+
     }
 }
