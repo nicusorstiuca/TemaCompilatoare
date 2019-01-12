@@ -49,14 +49,5 @@ namespace TemaFacultativa
             }
             return true;
         }
-        public void Print()
-        {
-            string concat = "";
-            foreach (string temp in Dreapta)
-            {
-                concat += temp + " ";
-            }
-            System.Console.WriteLine($"{Stanga} : {concat}");
-        }
     }
 }

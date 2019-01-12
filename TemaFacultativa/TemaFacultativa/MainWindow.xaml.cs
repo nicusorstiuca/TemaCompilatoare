@@ -31,10 +31,12 @@ namespace TemaFacultativa
             List<string> Neterminale = TextBox.GetLineText(1).Remove(TextBox.GetLineText(1).Length - 2).Split(' ').ToList();
             List<string> Terminale = TextBox.GetLineText(2).Remove(TextBox.GetLineText(2).Length - 2).Split(' ').ToList();
             gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
-            for(int i=4;i<TextBox.LineCount;i++)
+            int TextBoxTextLines = TextBox.LineCount;
+            for(int i=4;i<TextBoxTextLines-1;i++)
             {
                 gramatica.Add(TextBox.GetLineText(i).Remove(TextBox.GetLineText(i).Length-2));
             }
+            gramatica.Add(TextBox.GetLineText(TextBoxTextLines-1));
             gramatica.VerificaGramatica();
             string ReguliCorectate="";
             foreach(RegulaProductie temp in gramatica.Reguli)
@@ -63,6 +65,18 @@ namespace TemaFacultativa
                 MultimiDirector += "\n";
             }
             Display2.Text = MultimiDirector;
+        }
+        public string CodSursa;
+        private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+            CodSursa = generator.GenereazaCod();
+            Display3.Text = CodSursa;
+        }
+
+        private void Button_Click4(object sender, RoutedEventArgs e)
+        {
+            Compiler C = new Compiler(CodSursa);
+            C.Complie();
         }
     }
 }

@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Compiler.cs" />
     <Compile Include="GeneratorCod.cs" />
     <Compile Include="Gramatica.cs" />
     <Compile Include="RegulaProductie.cs" />

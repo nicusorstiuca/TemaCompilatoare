@@ -11,15 +11,17 @@ namespace TemaFacultativa
         public string SimbolStart;
         public List<string> Terminale;
         public List<string> Neterminale;
-        public List<string> NeterminaleNoi;
+        private List<string> NeterminaleNoi;
         public List<RegulaProductie> Reguli;
-        public Gramatica(string Start,List<string> Terminalele, List<string> Neterminalele)
+        public int netcount;
+        public Gramatica(string Start, List<string> Terminalele, List<string> Neterminalele)
         {
             SimbolStart = new string(Start.ToCharArray());
             Terminale = new List<string>(Terminalele);
             Neterminale = new List<string>(Neterminalele);
             NeterminaleNoi = new List<string>();
             Reguli = new List<RegulaProductie>();
+            netcount = 1;
         }
         public void Add(string line)
         {
@@ -116,17 +118,18 @@ namespace TemaFacultativa
                 foreach (RegulaProductie temp in RegNeterm)
                 {
                     List<string> NouaDreapta = temp.Dreapta;
-                    NouaDreapta.Add(Neterminal + "\'");
+                    NouaDreapta.Add(Neterminal + $"{netcount}");
                     RegulaProductie regulanoua = new RegulaProductie(NouaDreapta, temp.Stanga);
                     ReguliNoi.Add(regulanoua);
                 }
                 if (RegulaRecursiva != null)
                 {
                     RegulaRecursiva.Dreapta.Remove(Neterminal);
-                    RegulaRecursiva.Dreapta.Add(Neterminal + "\'");
-                    RegulaRecursiva.Stanga += "\'";
+                    RegulaRecursiva.Dreapta.Add(Neterminal + $"{netcount}");
+                    RegulaRecursiva.Stanga += $"{netcount}";
                     ReguliNoi.Add(RegulaRecursiva);
-                    neterminalu = Neterminal + "\'";
+                    neterminalu = Neterminal + $"{netcount}";
+                    netcount++;
                     NeterminaleNoi.Add(neterminalu);
                     RegulaProductie Epsilon = new RegulaProductie($"{neterminalu} : ~");
                     ReguliNoi.Add(Epsilon);
@@ -140,7 +143,6 @@ namespace TemaFacultativa
             List<RegulaProductie> ReguliNoi = new List<RegulaProductie>(RegNeterm);
             List<RegulaProductie> ReguliAcelasiInceput = new List<RegulaProductie>();
             string neterminalul = new string(Neterminal.ToCharArray());
-            int netcount = 1;
             List<string> AcelasiInceput = new List<string>();
             for (int i = 0; i < ReguliNoi.Count - 1; i++)
             {
@@ -190,16 +192,6 @@ namespace TemaFacultativa
                 }
             }
             return ReguliNoi;
-        }
-        public void Print()
-        {
-            int i = 1;
-            foreach (RegulaProductie a in Reguli)
-            {
-                Console.Write($"{i} ");
-                i++;
-                a.Print();
-            }
         }
     }
 }
