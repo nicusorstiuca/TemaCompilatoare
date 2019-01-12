@@ -61,6 +61,7 @@ namespace TemaFacultativa
                 }
             }
             Neterminale.AddRange(NeterminaleNoi);
+            NeterminaleNoi.Clear();
             foreach (string Neterminal in Neterminale)
             {
                 List<RegulaProductie> RegulileNeterminalului = ReguliNeterminal(Reguli, Neterminal);
