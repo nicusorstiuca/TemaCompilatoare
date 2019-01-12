@@ -94,26 +94,7 @@ namespace TemaFacultativa
             }
             int primaregula = i;
             CodRegulaProductie(ref cod, Gramatica.Reguli[reguli[i] - 1].Dreapta);
-            bool oneif = false;
-            foreach(string atom in Gramatica.Reguli[reguli[i]-1].Dreapta)
-            {
-                if (Gramatica.Terminale.IndexOf(atom) >= 0)
-                {
-                    oneif = true;
-                    break;
-                }
-                    
-            }
             i++;
-            if(i==reguli.Count()&&oneif==true)
-            {
-                cod +=  "else\n" +
-                        "{\n" +
-                        "int atomplace=i+1;\n"+
-                        "string errormessage=\"I[\"+atomplace.ToString()+\"] eroare!\";\n" +
-                        "throw new Exception(errormessage);" +
-                        "}\n";
-            }
             int nregula;
             while (i < reguli.Count())
             {
@@ -187,7 +168,6 @@ namespace TemaFacultativa
                     }
                 }
             }
-            MFollow = MFollow.Distinct().ToList();
             return MFollow;
         }
         public List<string> First(RegulaProductie alfa)
@@ -212,7 +192,6 @@ namespace TemaFacultativa
                     if (regula.Stanga == alfa.Dreapta[0])
                         MFirst.AddRange(First(regula));
                 }
-            MFirst = MFirst.Distinct().ToList();
             return MFirst;
         }
         public void ConditieLL1()
