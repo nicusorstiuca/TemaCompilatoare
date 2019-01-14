@@ -11,9 +11,9 @@
         <Button Content="Corecteaza" HorizontalAlignment="Left" Height="25" Width="80" Margin="0,5,0,350" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="350,10,0,0" Height="250" TextWrapping="Wrap" VerticalAlignment="Top"  Width="150" Name="Display1" />
         <Button Content="FirstFollow" HorizontalAlignment="Left" Height="25" Width="80" Margin="0,5,0,250" Click="Button_Click2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="500,10,0,0" Height="250" TextWrapping="Wrap" Text="Multimii First Follow" VerticalAlignment="Top"  Width="150" Name="Display2" />
+        <TextBlock HorizontalAlignment="Left" Margin="500,10,0,0" Height="250" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  Width="150" Name="Display2" />
         <Button Content="GenereazaCod" HorizontalAlignment="Left" Height="25" Width="80" Margin="0,5,0,150" Click="Button_Click3"/>
-        <TextBox HorizontalAlignment="Left" Margin="650,10,0,0" Height="350" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Text="Multimii First Follow" VerticalAlignment="Top"  Width="300" Name="Display3" />
+        <TextBox HorizontalAlignment="Left" Margin="650,10,0,0" Height="350" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Text="Cod Sursa" VerticalAlignment="Top"  Width="300" Name="Display3" />
         <Button Content="Executa" HorizontalAlignment="Left" Height="25" Width="80" Margin="0,5,0,50" Click="Button_Click4"/>
     </Grid>
 </Window>

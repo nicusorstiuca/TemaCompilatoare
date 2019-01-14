@@ -34,20 +34,19 @@ namespace TemaFacultativa
                 Dreapta.Add("~");
             }
         }
-        public bool Existenta(List<string> Neterminale, List<string> Terminale)
+        public void Existenta(List<string> Neterminale, List<string> Terminale)
         {
             if (Neterminale.IndexOf(Stanga) == -1 && Terminale.IndexOf(Stanga) == -1)
             {
-                return false;
+                throw new Exception($"\"{Stanga}\" nu face parte din lista de neterminale");
             }
             foreach (string temp in Dreapta)
             {
                 if (Neterminale.IndexOf(temp) == -1 && Terminale.IndexOf(temp) == -1)
                 {
-                    return false;
+                    throw new Exception($"\"{temp}\" nu face parte din lista de neterminale");
                 }
             }
-            return true;
         }
     }
 }

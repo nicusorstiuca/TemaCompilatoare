@@ -163,7 +163,7 @@ namespace TemaFacultativa
                             }
                             else
                                 if (MFollow.IndexOf("$") < 0)
-                                MFollow.Add("$");
+                                    MFollow.Add("$");
                         }
                     }
                 }

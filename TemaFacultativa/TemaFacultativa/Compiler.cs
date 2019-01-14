@@ -8,22 +8,13 @@ using System.Windows;
 
 namespace TemaFacultativa
 {
-    /// <summary>
-    /// This clas compiles the given code
-    /// </summary>
     class Compiler
     {
         public Compiler(string code)
         {
             _code = code;
         }
-        /// <summary>
-        /// The code that must be compiled
-        /// </summary>
         private string _code;
-        /// <summary>
-        /// Compiles the generated code
-        /// </summary>
         public void Complie()
         {
             var provider = new CSharpCodeProvider();

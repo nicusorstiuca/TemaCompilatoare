@@ -28,43 +28,59 @@ namespace TemaFacultativa
         private GeneratorCod generator;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            List<string> Neterminale = TextBox.GetLineText(1).Remove(TextBox.GetLineText(1).Length - 2).Split(' ').ToList();
-            List<string> Terminale = TextBox.GetLineText(2).Remove(TextBox.GetLineText(2).Length - 2).Split(' ').ToList();
-            gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
-            int TextBoxTextLines = TextBox.LineCount;
-            for(int i=4;i<TextBoxTextLines-1;i++)
+            try
             {
-                gramatica.Add(TextBox.GetLineText(i).Remove(TextBox.GetLineText(i).Length-2));
-            }
-            gramatica.Add(TextBox.GetLineText(TextBoxTextLines-1));
-            gramatica.VerificaGramatica();
-            string ReguliCorectate="";
-            foreach(RegulaProductie temp in gramatica.Reguli)
-            {
-                ReguliCorectate += temp.Stanga + " : ";
-                foreach(string s in temp.Dreapta)
+                List<string> Neterminale = TextBox.GetLineText(1).Remove(TextBox.GetLineText(1).Length - 2).Split(' ').ToList();
+                List<string> Terminale = TextBox.GetLineText(2).Remove(TextBox.GetLineText(2).Length - 2).Split(' ').ToList();
+                gramatica = new Gramatica(TextBox.GetLineText(0).Remove(TextBox.GetLineText(0).Length - 2), Terminale, Neterminale);
+                int TextBoxTextLines = TextBox.LineCount;
+                for (int i = 4; i < TextBoxTextLines - 1; i++)
                 {
-                    ReguliCorectate += s+ " ";
+                    gramatica.Add(TextBox.GetLineText(i).Remove(TextBox.GetLineText(i).Length - 2));
                 }
-                ReguliCorectate += '\n';
+                gramatica.Add(TextBox.GetLineText(TextBoxTextLines - 1));
+                gramatica.VerificaGramatica();
+                string ReguliCorectate = "";
+                foreach (RegulaProductie temp in gramatica.Reguli)
+                {
+                    ReguliCorectate += temp.Stanga + " : ";
+                    foreach (string s in temp.Dreapta)
+                    {
+                        ReguliCorectate += s + " ";
+                    }
+                    ReguliCorectate += '\n';
+                }
+                Display1.Text = ReguliCorectate;
             }
-            Display1.Text = ReguliCorectate;
-        }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        
+
+    }
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            generator = new GeneratorCod(gramatica);
-            generator.MultimileFF();
-            string MultimiDirector="";
-            foreach(List<string> i in generator.FirstFollow)
+            try
             {
-                foreach(string j in i)
+                generator = new GeneratorCod(gramatica);
+                generator.MultimileFF();
+                string MultimiDirector = "";
+                foreach (List<string> i in generator.FirstFollow)
                 {
-                    MultimiDirector += j + " ";
+                    foreach (string j in i)
+                    {
+                        MultimiDirector += j + " ";
+                    }
+                    MultimiDirector += "\n";
                 }
-                MultimiDirector += "\n";
+                Display2.Text = MultimiDirector;
             }
-            Display2.Text = MultimiDirector;
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
         }
         public string CodSursa;
         private void Button_Click3(object sender, RoutedEventArgs e)

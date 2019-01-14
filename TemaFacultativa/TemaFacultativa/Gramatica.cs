@@ -34,19 +34,15 @@ namespace TemaFacultativa
         }
         public void VerificaGramatica()
         {
+            Existenta();
             GramaticaLL1();
         }
-        public bool Existenta()
+        public void Existenta()
         {
             foreach (RegulaProductie temp in Reguli)
             {
-                if (temp.Existenta(Neterminale, Terminale) == false)
-                {
-                    return false;
-                }
+                temp.Existenta(Neterminale, Terminale);
             }
-
-            return true;
         }
         public void GramaticaLL1()
         {
